@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Estudiantes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Grupo 8</h1>
+    <h2>Registro de Estudiantes</h2>
+  </header>
+
+  <nav>
+    <a href="Dashboard.html">Inicio</a>
+    <a href="registro.html">Registro</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Formulario de Registro de Estudiantes</h2>
+      <form action="#" method="post">
+        <div style="margin-bottom: 1rem;">
+          <label for="student-name">Nombre Completo:</label><br>
+          <input type="text" id="student-name" name="student-name" required>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="student-id">Matrícula:</label><br>
+          <input type="text" id="student-id" name="student-id" required>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="email">Correo Electrónico:</label><br>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="dob">Fecha de Nacimiento:</label><br>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="course">Curso:</label><br>
+          <select id="course" name="course">
+            <option value="web-design">Diseño Web</option>
+            <option value="programming">Programación</option>
+            <option value="graphic-design">Diseño Gráfico</option>
+          </select>
+        </div>
+
+        <button type="submit">Registrar</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
