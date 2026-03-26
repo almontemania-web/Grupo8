@@ -15,56 +15,53 @@
   <nav>
     <a href="Dashboard.html">Inicio</a>
     <a href="registro.html">Registro</a>
-    <a href="mantenimiento.html">Estudiantes</a>
     <a href="#">Contacto</a>
   </nav>
 
   <main>
     <section>
-      <div class="form-wrapper">
-        <h2>Formulario de Registro de Estudiantes</h2>
-        <div id="mensaje-formulario"></div>
+  <h2>Formulario de Registro de Estudiantes</h2>
+  <div id="mensaje-formulario"></div>
 
-        <form id="formulario-registro" novalidate>
-          <div class="form-group">
-            <label for="nombre-estudiante">Nombre Completo:</label>
-            <input type="text" id="nombre-estudiante" name="nombre-estudiante" autocomplete="name" required>
-            <span id="error-nombre" class="error-text"></span>
-          </div>
+  <form id="formulario-registro" novalidate>
+    <div style="margin-bottom: 1rem;">
+      <label for="nombre-estudiante">Nombre Completo:</label><br>
+      <input type="text" id="nombre-estudiante" name="nombre-estudiante" autocomplete="name" required>
+      <span id="error-nombre" class="error-text"></span>
+    </div>
 
-          <div class="form-group">
-            <label for="matricula-estudiante">Matrícula:</label>
-            <input type="text" id="matricula-estudiante" name="matricula-estudiante" autocomplete="off" required>
-            <span id="error-matricula" class="error-text"></span>
-          </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="matricula-estudiante">Matrícula:</label><br>
+      <input type="text" id="matricula-estudiante" name="matricula-estudiante" autocomplete="off" required>
+      <span id="error-matricula" class="error-text"></span>
+    </div>
 
-          <div class="form-group">
-            <label for="correo-estudiante">Correo Electrónico:</label>
-            <input type="email" id="correo-estudiante" name="correo-estudiante" autocomplete="email" required>
-            <span id="error-correo" class="error-text"></span>
-          </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="correo-estudiante">Correo Electrónico:</label><br>
+      <input type="email" id="correo-estudiante" name="correo-estudiante" autocomplete="email" required>
+      <span id="error-correo" class="error-text"></span>
+    </div>
 
-          <div class="form-group">
-            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="off" required>
-            <span id="error-fecha" class="error-text"></span>
-          </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="fecha-nacimiento">Fecha de Nacimiento:</label><br>
+      <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="off" required>
+      <span id="error-fecha" class="error-text"></span>
+    </div>
 
-          <div class="form-group">
-            <label for="curso-estudiante">Curso:</label>
-            <select id="curso-estudiante" name="curso-estudiante" autocomplete="off">
-              <option value="diseno-web">Diseño Web</option>
-              <option value="programacion">Programación</option>
-              <option value="diseno-grafico">Diseño Gráfico</option>
-            </select>
-          </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="curso-estudiante">Curso:</label><br>
+      <select id="curso-estudiante" name="curso-estudiante" autocomplete="off">
+        <option value="diseno-web">Diseño Web</option>
+        <option value="programacion">Programación</option>
+        <option value="diseno-grafico">Diseño Gráfico</option>
+      </select>
+    </div>
 
-          <button type="submit">Registrar</button>
-        </form>
-      </div>
-    </section>
+    <button type="submit">Registrar</button>
+  </form>
+</section>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
   </main>
 </body>
 </html>

@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputCurso = document.getElementById('curso-estudiante');
     const mensajeFormulario = document.getElementById('mensaje-formulario');
 
-    /* URL del backend PHP */
-    const API_REGISTRAR = 'backend/registrar.php';
+    /* Recuperamos los estudiantes guardados en LocalStorage. */
+    /* Si no hay datos, inicializamos un arreglo vacío []. */
+
+    let estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
     
     /* Función para mostrar mensajes de error dinámicos */
     const mostrarError = (input, idSpan, mensaje) => {
@@ -78,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const matriculaValida = validarMatricula();
         const correoValido = validarCorreo();
         const fechaValida = validarFecha();
-       /* Si todas las validaciones son verdaderas (true), enviamos al servidor */
+       /* Si todas las validaciones son verdaderas (true), procedemos a guardar */
         if (nombreValido && matriculaValida && correoValido && fechaValida) {
-
+            /* Creamos un objeto con los datos del nuevo estudiante */
             const nuevoEstudiante = {
                 nombre: inputNombre.value.trim(),
                 matricula: inputMatricula.value.trim(),
@@ -88,34 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 fechaNacimiento: inputFecha.value,
                 curso: inputCurso.value
             };
-
-            /* POST al backend PHP — las credenciales nunca llegan al cliente */
-            fetch(API_REGISTRAR, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(nuevoEstudiante)
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    mensajeFormulario.innerHTML = data.message + ' Redirigiendo...';
-                    mensajeFormulario.classList.remove('error');
-                    mensajeFormulario.classList.add('success');
-                    formulario.reset();
-                    /* Redirige al mantenimiento para ver la lista actualizada */
-                    setTimeout(() => { window.location.href = 'mantenimiento.html'; }, 1500);
-                } else {
-                    mensajeFormulario.innerHTML = data.error || 'Error al registrar.';
-                    mensajeFormulario.classList.remove('success');
-                    mensajeFormulario.classList.add('error');
-                }
-            })
-            .catch(() => {
-                mensajeFormulario.innerHTML = 'No se pudo conectar con el servidor.';
-                mensajeFormulario.classList.remove('success');
-                mensajeFormulario.classList.add('error');
-            });
-
+                /* Agregamos el nuevo estudiante al arreglo y lo guardamos en LocalStorage */
+            estudiantes.push(nuevoEstudiante);
+            localStorage.setItem('estudiantes', JSON.stringify(estudiantes));
+            /* Mostramos mensaje de éxito y limpiamos el formulario */
+            mensajeFormulario.innerHTML = '¡Estudiante registrado con éxito!';
+            mensajeFormulario.classList.remove('error');
+            mensajeFormulario.classList.add('success');
+            formulario.reset();
         } else {
             /* Si hay errores, mostramos un mensaje general de error */
             mensajeFormulario.innerHTML = 'Por favor, corrige los errores señalados.';
