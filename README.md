@@ -45,7 +45,7 @@ Sección de Cursos y Tablas: Cada artículo cuenta con sombreado dinámico (`box
 🆕 Notas del Parche (Versión 2.0)
 
 Respecto a la versión anterior (Etapa 1: Maquetación estática), se han implementado las siguientes mejoras para dotar al proyecto de interactividad del lado del cliente:
-
+add
 Validaciones en tiempo real Se programó la verificación instantánea de los datos del formulario mediante JavaScript (campos vacíos, formato de correo electrónico y longitud mínima de caracteres).
 Manipulación dinámica del DOM Se integró la capacidad de mostrar mensajes de éxito o error y aplicar estilos de validación sin recargar la página, utilizando funciones nativas como `getElementById()`, `querySelector()`, `innerHTML` y `classList`.
 Persistencia temporal de datos Se reemplazó el comportamiento por defecto del formulario para guardar la información capturada utilizando arreglos de objetos dentro del `LocalStorage` del navegador.
