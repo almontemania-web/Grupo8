@@ -3,7 +3,7 @@
 Este es un panel universitario interactivo diseñado para la gestión y registro de estudiantes en diversos cursos técnicos. El proyecto se enfoca en ofrecer una interfaz limpia, profesional y responsiva, utilizando una paleta de colores institucional, incorporando validaciones dinámicas y almacenamiento local de datos.
 
 💻 Lista de participantes del proyecto:
-<<<<<<< HEAD
+
 Jeancarlos Almonte
 Ramón Antonio Ureña Brito
 Danny Rodriguez 
@@ -11,15 +11,7 @@ Eduardo Ferreras De los Santos
 Angel Camilo Medina Fernandez 
 Smarlim Mejía Cabrera 
 Jensy Fernando Ovalles Hernández
-=======
- Jeancarlos Almonte
- Ramón Antonio Ureña Brito
- Danny Rodriguez 
- Eduardo Ferreras De los Santos
- Angel Camilo Medina Fernandez
- Smarlim Mejía Cabrera
- Jensy Fernando Ovalles Hernández
->>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
+
 
 🎛️ Características
 Panel de Control (Dashboard): Visualización de bienvenida, catálogo de cursos ofrecidos y una tabla dinámica que muestra los estudiantes registrados.
@@ -55,7 +47,6 @@ Sección de Cursos y Tablas: Cada artículo cuenta con sombreado dinámico (`box
 🆕 Notas del Parche (Versión 2.0)
 
 Respecto a la versión anterior (Etapa 1: Maquetación estática), se han implementado las siguientes mejoras para dotar al proyecto de interactividad del lado del cliente:
-<<<<<<< HEAD
 
 Validaciones en tiempo real Se programó la verificación instantánea de los datos del formulario mediante JavaScript (campos vacíos, formato de correo electrónico y longitud mínima de caracteres).
 Manipulación dinámica del DOM Se integró la capacidad de mostrar mensajes de éxito o error y aplicar estilos de validación sin recargar la página, utilizando funciones nativas como `getElementById()`, `querySelector()`, `innerHTML` y `classList`.
@@ -84,10 +75,10 @@ Formulario de inicio de sesión (Login)
 Funcionalidad de cierre de sesión (Logout)
 
 Con esta mejora, se restringe el acceso a usuarios autenticados, incrementando la seguridad del sistema y protegiendo la información gestionada.
-=======
+
 add
 Validaciones en tiempo real Se programó la verificación instantánea de los datos del formulario mediante JavaScript (campos vacíos, formato de correo electrónico y longitud mínima de caracteres).
 Manipulación dinámica del DOM Se integró la capacidad de mostrar mensajes de éxito o error y aplicar estilos de validación sin recargar la página, utilizando funciones nativas como `getElementById()`, `querySelector()`, `innerHTML` y `classList`.
 Persistencia temporal de datos Se reemplazó el comportamiento por defecto del formulario para guardar la información capturada utilizando arreglos de objetos dentro del `LocalStorage` del navegador.
 Generación de contenido dinámico Se añadió una tabla en el panel de inicio (Dashboard) que lee los datos del `LocalStorage` y construye sus filas automáticamente para mostrar a los estudiantes registrados.
->>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
+
