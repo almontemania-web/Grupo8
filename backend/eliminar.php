@@ -37,10 +37,17 @@ mysqli_stmt_bind_param($stmt, 'i', $id);
 
 if (mysqli_stmt_execute($stmt)) {
     if (mysqli_stmt_affected_rows($stmt) > 0) {
+<<<<<<< HEAD
         echo json_encode(['success' => true, 'message' => '¡Estudiante eliminado correctamente!']);
     } else {
         http_response_code(404);
         echo json_encode(['error' => 'No se encontró el estudiante para eliminar.']);
+=======
+        echo json_encode(['success' => true, 'message' => 'Estudiante eliminado correctamente.']);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Estudiante no encontrado.']);
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
     }
 } else {
     http_response_code(500);

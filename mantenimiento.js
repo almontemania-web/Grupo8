@@ -3,6 +3,7 @@
 // GET (listar) · POST actualizar (editar) · POST eliminar (borrar)
 // ============================================================
 
+<<<<<<< HEAD
 
 const API_BASE = 'backend/';
 
@@ -259,6 +260,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Iniciar carga al cargar la página ────────────────────────
     cargarEstudiantes();
 });
+=======
+const API_BASE = 'backend/';
+
+// ── Referencias DOM ──────────────────────────────────────────
+const estadoCarga      = document.getElementById('estado-carga');
+const tabla            = document.getElementById('tabla-estudiantes');
+const cuerpoTabla      = document.getElementById('cuerpo-tabla');
+
+const modalEditar      = document.getElementById('modal-editar');
+const formEditar       = document.getElementById('form-editar');
+const btnCancelarEditar = document.getElementById('btn-cancelar-editar');
+
+const modalEliminar    = document.getElementById('modal-eliminar');
+const confirmNombre    = document.getElementById('confirm-nombre');
+const btnCancelarElim  = document.getElementById('btn-cancelar-eliminar');
+const btnConfirmarElim = document.getElementById('btn-confirmar-eliminar');
+
+const toast = document.getElementById('toast');
+
+// ID a eliminar (guardado al abrir el modal)
+let idAEliminar = null;
+
+// ── Utilidad: Toast de notificación ──────────────────────────
+function mostrarToast(mensaje, tipo = 'success') {
+    toast.textContent = mensaje;
+    toast.className = tipo;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 3500);
+}
+
+// ── Utilidad: Nombre legible del curso ───────────────────────
+const nombreCurso = {
+    'diseno-web':    'Diseño Web',
+    'programacion':  'Programación',
+    'diseno-grafico':'Diseño Gráfico'
+};
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
 
 // ── READ: cargar y renderizar tabla ──────────────────────────
 function cargarEstudiantes() {
@@ -366,7 +404,11 @@ formEditar.addEventListener('submit', e => {
     .then(data => {
         modalEditar.classList.remove('active');
         if (data.success) {
+<<<<<<< HEAD
             mostrarToast(data.message || 'Estudiante actualizado correctamente.', 'success');
+=======
+            mostrarToast(data.message, 'success');
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
             cargarEstudiantes();   // Refresca la tabla
         } else {
             mostrarToast(data.error || 'Error al actualizar.', 'error');
@@ -409,7 +451,11 @@ btnConfirmarElim.addEventListener('click', () => {
         modalEliminar.classList.remove('active');
         idAEliminar = null;
         if (data.success) {
+<<<<<<< HEAD
             mostrarToast(data.message || 'Estudiante eliminado correctamente.', 'success');
+=======
+            mostrarToast(data.message, 'success');
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
             cargarEstudiantes();   // Refresca la tabla
         } else {
             mostrarToast(data.error || 'Error al eliminar.', 'error');
@@ -419,6 +465,7 @@ btnConfirmarElim.addEventListener('click', () => {
 });
 
 // ── Iniciar carga al cargar la página ────────────────────────
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
     cargarEstudiantes();
 });
@@ -466,3 +513,6 @@ formNuevo.addEventListener('submit', e => {
     })
     .catch(() => mostrarToast('No se pudo conectar con el servidor.', 'error'));
 });
+=======
+cargarEstudiantes();
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7

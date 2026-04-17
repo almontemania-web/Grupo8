@@ -58,7 +58,11 @@ if (mysqli_stmt_execute($stmt)) {
         echo json_encode(['success' => true, 'message' => '¡Estudiante actualizado correctamente!']);
     } else {
         http_response_code(404);
+<<<<<<< HEAD
         echo json_encode(['error' => 'No se encontró el estudiante para actualizar.']);
+=======
+        echo json_encode(['error' => 'Estudiante no encontrado.']);
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
     }
 } else {
     http_response_code(500);

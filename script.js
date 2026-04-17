@@ -9,8 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputCurso = document.getElementById('curso-estudiante');
     const mensajeFormulario = document.getElementById('mensaje-formulario');
 
+<<<<<<< HEAD
     /* URL del backend PHP */
     const API_REGISTRAR = 'backend/registrar.php';
+=======
+    /* Recuperamos los estudiantes guardados en LocalStorage. */
+    /* Si no hay datos, inicializamos un arreglo vacío []. */
+
+    let estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
     
     /* Función para mostrar mensajes de error dinámicos */
     const mostrarError = (input, idSpan, mensaje) => {
@@ -78,9 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const matriculaValida = validarMatricula();
         const correoValido = validarCorreo();
         const fechaValida = validarFecha();
+<<<<<<< HEAD
        /* Si todas las validaciones son verdaderas (true), enviamos al servidor */
         if (nombreValido && matriculaValida && correoValido && fechaValida) {
 
+=======
+       /* Si todas las validaciones son verdaderas (true), procedemos a guardar */
+        if (nombreValido && matriculaValida && correoValido && fechaValida) {
+            /* Creamos un objeto con los datos del nuevo estudiante */
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
             const nuevoEstudiante = {
                 nombre: inputNombre.value.trim(),
                 matricula: inputMatricula.value.trim(),
@@ -88,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fechaNacimiento: inputFecha.value,
                 curso: inputCurso.value
             };
+<<<<<<< HEAD
 
             /* POST al backend PHP — las credenciales nunca llegan al cliente */
             fetch(API_REGISTRAR, {
@@ -123,6 +137,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else {
             mensajeFormulario.innerHTML = `<div class="alert alert-danger" role="alert">Por favor, corrige los errores señalados.</div>`;
+=======
+                /* Agregamos el nuevo estudiante al arreglo y lo guardamos en LocalStorage */
+            estudiantes.push(nuevoEstudiante);
+            localStorage.setItem('estudiantes', JSON.stringify(estudiantes));
+            /* Mostramos mensaje de éxito y limpiamos el formulario */
+            mensajeFormulario.innerHTML = '¡Estudiante registrado con éxito!';
+            mensajeFormulario.classList.remove('error');
+            mensajeFormulario.classList.add('success');
+            formulario.reset();
+        } else {
+            /* Si hay errores, mostramos un mensaje general de error */
+            mensajeFormulario.innerHTML = 'Por favor, corrige los errores señalados.';
+            mensajeFormulario.classList.remove('success');
+            mensajeFormulario.classList.add('error');
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
         }
     });
 });

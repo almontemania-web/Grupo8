@@ -6,7 +6,11 @@
 $host     = 'localhost';
 $dbname   = 'grupo8_db';
 $usuario  = 'root';
+<<<<<<< HEAD
 $password = '';         
+=======
+$password = '';          // Cambia esto si tu MySQL tiene contraseña
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
 
 $conn = mysqli_connect($host, $usuario, $password, $dbname);
 
@@ -16,4 +20,7 @@ if (!$conn) {
 }
 
 mysqli_set_charset($conn, 'utf8mb4');
+<<<<<<< HEAD
 ?>
+=======
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7

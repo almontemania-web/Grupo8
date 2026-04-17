@@ -26,13 +26,19 @@ require_once 'db.php';
 // Leer JSON del cuerpo de la petición
 $data = json_decode(file_get_contents('php://input'), true);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
 $nombre          = trim($data['nombre']          ?? '');
 $matricula       = trim($data['matricula']       ?? '');
 $correo          = trim($data['correo']          ?? '');
 $fechaNacimiento = trim($data['fechaNacimiento'] ?? '');
 $curso           = trim($data['curso']           ?? '');
+<<<<<<< HEAD
 $password = password_hash($matricula, PASSWORD_DEFAULT); // La matrícula será la contraseña
+=======
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
 
 // Validación básica del lado servidor
 if (!$nombre || !$matricula || !$correo || !$fechaNacimiento || !$curso) {
@@ -47,6 +53,7 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+<<<<<<< HEAD
 
 // INSERT con prepared statement (incluye password por defecto)
 $stmt = mysqli_prepare(
@@ -56,6 +63,16 @@ $stmt = mysqli_prepare(
 );
 
 mysqli_stmt_bind_param($stmt, 'ssssss', $nombre, $matricula, $correo, $fechaNacimiento, $curso, $password);
+=======
+// INSERT con prepared statement (previene inyección SQL)
+$stmt = mysqli_prepare(
+    $conn,
+    "INSERT INTO estudiantes (nombre, matricula, correo, fecha_nacimiento, curso)
+     VALUES (?, ?, ?, ?, ?)"
+);
+
+mysqli_stmt_bind_param($stmt, 'sssss', $nombre, $matricula, $correo, $fechaNacimiento, $curso);
+>>>>>>> 027e23df8f4aa0c9787cdc3936092704bc0a64b7
 
 if (mysqli_stmt_execute($stmt)) {
     http_response_code(201);
