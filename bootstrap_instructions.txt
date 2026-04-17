@@ -1,0 +1,7 @@
+1. Agrega el CDN de Bootstrap en la cabecera de tus archivos HTML principales (Dashboard.html, mantenimiento.html, registro.html).
+2. Reemplaza los estilos personalizados de style.css por clases de Bootstrap en formularios, botones, tablas y menús.
+3. Usa componentes de Bootstrap para alertas, cards, navbars y formularios.
+4. Elimina o minimiza el uso de estilos personalizados para mantener la consistencia visual.
+5. Verifica que la interfaz sea responsiva y visualmente unificada.
+
+A continuación, se integrará Bootstrap en los archivos HTML y se actualizarán los componentes visuales.

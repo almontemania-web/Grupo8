@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantenimiento de Estudiantes</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast de notificación -->
+  <div id="toast"></div>
+
+  <header style="background: var(--uapa-azul); color: #fff; border-bottom: none; margin-bottom: 0; box-shadow: none;">
+    <h1 style="margin-bottom: 0; padding-bottom: 0;">Mantenimiento de Estudiantes</h1>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark uapa-navbar" style="border-bottom: none;">
+    <div class="container-fluid position-relative">
+      <a class="navbar-brand" href="#">Panel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="Dashboard.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+          <li class="nav-item"><a class="nav-link active" href="mantenimiento.html">Estudiantes</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="backend/logout.php" class="btn btn-outline-light ms-lg-2">Cerrar sesión</a>
+            </li>
+          </ul>
+      </div>
+      <div class="uapa-orange-bar" style="position:absolute; left:0; right:0; bottom:0; height:5px; margin:0; padding:0; border:none;"></div>
+    </div>
+  </nav>
+
+  <main class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="uapa-card w-100" style="max-width:100%;">
+          <div class="seccion-header">
+            <h2>Listado de Estudiantes</h2>
+            <button class="btn-nuevo" id="btn-nuevo-estudiante">Nuevo Estudiante</button>
+          </div>
+          <div id="estado-carga">Cargando estudiantes...</div>
+          <div class="table-responsive w-100">
+            <table id="tabla-estudiantes" class="table table-striped w-100" style="display:none;">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Matrícula</th>
+                  <th>Correo</th>
+                  <th>Fecha Nacimiento</th>
+                  <th>Curso</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="cuerpo-tabla"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-light text-center py-3 mt-4">
+    <small>&copy; 2026 Grupo 8 - Desarrollo de Aplicaciones Web</small>
+  </footer>
+  <script>
+    // Validar sesión al cargar la página
+    fetch('backend/validar_sesion.php')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.autenticado) {
+          window.location.href = 'login.html';
+        }
+      })
+      .catch(() => window.location.href = 'login.html');
+  </script>
+
+  <!-- ── Modal: Editar Estudiante ── -->
+  <div class="modal-overlay" id="modal-editar">
+    <div class="custom-modal">
+      <h3>Editar Estudiante</h3>
+      <form id="form-editar" novalidate>
+        <input type="hidden" id="edit-id">
+        <div class="mb-3">
+          <label for="edit-nombre" class="form-label">Nombre Completo:</label>
+          <input type="text" class="form-control" id="edit-nombre" required>
+        </div>
+        <div class="mb-3">
+          <label for="edit-matricula" class="form-label">Matrícula:</label>
+          <input type="text" class="form-control" id="edit-matricula" required>
+        </div>
+        <div class="mb-3">
+          <label for="edit-correo" class="form-label">Correo Electrónico:</label>
+          <input type="email" class="form-control" id="edit-correo" required>
+        </div>
+        <div class="mb-3">
+          <label for="edit-fecha" class="form-label">Fecha de Nacimiento:</label>
+          <input type="date" class="form-control" id="edit-fecha" required>
+        </div>
+        <div class="mb-3">
+          <label for="edit-curso" class="form-label">Curso:</label>
+          <select id="edit-curso" class="form-select">
+            <option value="diseno-web">Diseño Web</option>
+            <option value="programacion">Programación</option>
+            <option value="diseno-grafico">Diseño Gráfico</option>
+          </select>
+        </div>
+        <div class="d-flex gap-2 justify-content-end">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-editar">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Modal: Confirmar Eliminación ── -->
+  <div class="modal-overlay" id="modal-eliminar">
+    <div class="custom-modal modal-confirm">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar a <strong id="confirm-nombre"></strong>? Esta acción no se puede deshacer.</p>
+      <div class="modal-buttons">
+        <button type="button" class="btn btn-secondary" id="btn-cancelar-eliminar">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btn-confirmar-eliminar">Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Modal: Nuevo Estudiante ── -->
+  <div class="modal-overlay" id="modal-nuevo">
+    <div class="custom-modal">
+      <h3>Agregar Estudiante</h3>
+      <form id="form-nuevo" novalidate>
+        <div class="mb-3">
+          <label for="nuevo-nombre" class="form-label">Nombre Completo:</label>
+          <input type="text" class="form-control" id="nuevo-nombre" required>
+        </div>
+        <div class="mb-3">
+          <label for="nuevo-matricula" class="form-label">Matrícula:</label>
+          <input type="text" class="form-control" id="nuevo-matricula" required>
+        </div>
+        <div class="mb-3">
+          <label for="nuevo-correo" class="form-label">Correo Electrónico:</label>
+          <input type="email" class="form-control" id="nuevo-correo" required>
+        </div>
+        <div class="mb-3">
+          <label for="nuevo-fecha" class="form-label">Fecha de Nacimiento:</label>
+          <input type="date" class="form-control" id="nuevo-fecha" required>
+        </div>
+        <div class="mb-3">
+          <label for="nuevo-curso" class="form-label">Curso:</label>
+          <select id="nuevo-curso" class="form-select">
+            <option value="diseno-web">Diseño Web</option>
+            <option value="programacion">Programación</option>
+            <option value="diseno-grafico">Diseño Gráfico</option>
+          </select>
+        </div>
+        <div class="d-flex gap-2 justify-content-end">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-nuevo">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="mantenimiento.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

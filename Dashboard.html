@@ -1,51 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Dashboard - Panel de Control</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Grupo 8</h1>
-    <h2>Registro de Estudiantes</h2>
+
+  <header style="background: var(--uapa-azul); color: #fff; border-bottom: none; margin-bottom: 0; box-shadow: none;">
+    <h1 style="margin-bottom: 0; padding-bottom: 0;">Panel de Control</h1>
   </header>
 
-  <nav>
-    <a href="Dashboard.html">Inicio</a>
-    <a href="registro.html">Registro</a>
-    <a href="#">Contacto</a>
+  <nav class="navbar navbar-expand-lg navbar-dark uapa-navbar" style="border-bottom: none;">
+    <div class="container-fluid position-relative">
+      <a class="navbar-brand" href="#">Panel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="Dashboard.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+          <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Estudiantes</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="backend/logout.php" class="btn btn-outline-light ms-lg-2">Cerrar sesión</a>
+          </li>
+        </ul>
+      </div>
+      <div class="uapa-orange-bar" style="position:absolute; left:0; right:0; bottom:0; height:5px; margin:0; padding:0; border:none;"></div>
+    </div>
   </nav>
 
-  <main>
-    <section>
-      <h2>Bienvenido al Panel</h2>
-      <p>Tenemos cursos orientados a la capacitación tecnológica.</p>
-      <div style="text-align: center; margin-top: 4rem;">
-        <img src="Grupo8.png" alt="Grupo 8" style="max-width: 100%;">
-      </div>
-    </section>
+  <main class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="uapa-card w-100" style="max-width:100%;">
+          
+          <div class="text-center mb-5">
+            <div class="mb-4">
+              <img src="Grupo8.png" alt="Grupo 8" class="img-fluid rounded shadow" style="max-width: 280px;">
+            </div>
+            <h2 class="display-6 fw-bold">Bienvenidos</h2>
+            <p class="lead">Tenemos cursos orientados a la capacitación tecnológica.</p>
+          </div>
 
-    <section>
-      <h2>Cursos Ofrecidos</h2>
-      <article class="course">
-        <h3>Diseño Web</h3>
-        <p>Aprende a crear sitios web modernos y responsivos utilizando las últimas tecnologías como HTML, CSS y JavaScript. Este curso está diseñado para principiantes y profesionales que desean mejorar sus habilidades en diseño web.</p>
-      </article>
-      <article class="course">
-        <h3>Programación</h3>
-        <p>Domina los fundamentos de la programación y desarrolla aplicaciones utilizando lenguajes como Python, Java y más. Este curso incluye proyectos prácticos para que puedas aplicar tus conocimientos en situaciones reales.</p>
-      </article>
-      <article class="course">
-        <h3>Diseño Gráfico</h3>
-        <p>Explora el mundo del diseño visual y aprende a crear gráficos impactantes utilizando herramientas como Adobe Photoshop e Illustrator. Este curso te ayudará a desarrollar un portafolio profesional para destacar en el mercado laboral.</p>
-      </article>
-    </section>
+          <hr>
+
+          <div class="mt-5">
+            <h2 class="text-center mb-4">Cursos Ofrecidos</h2>
+            <div class="row g-4 justify-content-center">
+              
+              <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                  <div class="card-body">
+                    <h3 class="h5" style="color: var(--uapa-azul);">Diseño Web</h3>
+                    <p class="small text-muted">Aprende a crear sitios web modernos y responsivos utilizando las últimas tecnologías como HTML, CSS y JavaScript.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                  <div class="card-body">
+                    <h3 class="h5" style="color: var(--uapa-azul);">Programación</h3>
+                    <p class="small text-muted">Domina los fundamentos de la programación y desarrolla aplicaciones utilizando lenguajes como Python, Java y más.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                  <div class="card-body">
+                    <h3 class="h5" style="color: var(--uapa-azul);">Diseño Gráfico</h3>
+                    <p class="small text-muted">Explora el mundo del diseño visual y aprende a crear gráficos impactantes utilizando Adobe Photoshop e Illustrator.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div> </div>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Panel Universitario. Todos los derechos reservados -Grupo 8-.</p>
+  <footer class="bg-light text-center py-3 mt-4">
+    <small>&copy; 2026 Grupo 8 - Desarrollo de Aplicaciones Web</small>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="dashboard.js"></script>
+
+  <script>
+    // Validar sesión
+    fetch('backend/validar_sesion.php')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.autenticado) {
+          window.location.href = 'login.html';
+        }
+      })
+      .catch(() => window.location.href = 'login.html');
+  </script>
 </body>
 </html>
